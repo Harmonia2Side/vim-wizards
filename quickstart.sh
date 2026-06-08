@@ -27,20 +27,22 @@ if ! python3 -m pip --version &> /dev/null; then
     read -p "Would you like to install pip? (y/n): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        echo "Installing pip..."
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python3 get-pip.py --user
-        rm get-pip.py
+        echo "Curl execution has been deprecated. Please install pip manually."
+        echo "  Ubuntu/Debian: sudo apt-get install python3-pip"
+        echo "  Fedora: sudo dnf install python3-pip"
+        # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
+        # python3 get-pip.py --user
+        # rm get-pip.py
         
-        # Add pip to PATH for current session
-        export PATH="$HOME/.local/bin:$PATH"
+        # # Add pip to PATH for current session
+        #export PATH="$HOME/.local/bin:$PATH"
         
-        # Verify pip installation
-        if ! python3 -m pip --version &> /dev/null; then
-            echo -e "${RED}Failed to install pip. Please install it manually.${NC}"
-            exit 1
-        fi
-        echo -e "${GREEN}pip installed successfully!${NC}"
+        # # Verify pip installation
+        # if ! python3 -m pip --version &> /dev/null; then
+        #    echo -e "${RED}Failed to install pip. Please install it manually.${NC}"
+        #    exit 1
+        #fi
+        # echo -e "${GREEN}pip installed successfully!${NC}"
     else
         echo -e "${RED}pip is required to continue. Exiting.${NC}"
         exit 1
